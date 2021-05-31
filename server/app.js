@@ -36,6 +36,7 @@ app.get('/books/search', (req, res)=>{
         }
     url += q
     url += "&printType=" + print;
+    url += "&maxResults=10"
     // if (title !== undefined) {
     //     url += "intitle:";
     //     url += title

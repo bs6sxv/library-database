@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import EditLibrary from './EditLibrary'
+import LibraryHeader from "./LibraryHeader"
 
-export default function SearchPage() {
+export default function Library() {
   const[library, setLibrary] = useState([]);
 
   useEffect(()=>{
@@ -16,7 +17,7 @@ export default function SearchPage() {
 
   const Loading = () =>{
     if (library.length === 0) {
-      return "Loading Library..."
+      return "Loading..."
     } else {
       return "Your library contains: " + library.length + " books!"
     }
@@ -25,7 +26,9 @@ export default function SearchPage() {
 
   return (
     <div>
-      <h2 style={{marginLeft: 570}}>{Loading()}</h2>
+      <LibraryHeader></LibraryHeader>
+      <h1 style={{justifyContent:"center", marginLeft:850}}>Personal Library</h1>
+      <h2 style={{marginLeft: 800}}> {Loading()}</h2>
       {library.map((book)=>(
         <EditLibrary
         setLibrary={setLibrary}

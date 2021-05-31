@@ -1,10 +1,11 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 // import {Button, Input, Box, TextField, Grid} from "@material-ui/core"
 import axios from "axios";
 import StarRating from '@material-ui/lab/Rating';
 import SearchIcon from '@material-ui/icons/Search'
-import {Radio, RadioGroup, FormControlLabel, FormLabel, TextField, FormControl, Select, MenuItem,InputLabel, Button, IconButton, Box, Grid} from "@material-ui/core";
+import {Radio, RadioGroup, FormControlLabel, TextField, FormControl, Select, MenuItem,InputLabel, Button, IconButton, Box, Grid} from "@material-ui/core";
 import Display from "./Display"
+import SearchHeader from "./SearchHeader"
 
 export default function SearchPage() {
   const[books, setBooks] = useState([]);
@@ -142,7 +143,8 @@ const handlePrint = (e) => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-        {beforeDisplay(books)}
+      <SearchHeader ></SearchHeader>
+        <div style={{marginTop: 20}}>{beforeDisplay(books)}
          <Box boxShadow={7} border={2} bgcolor="#f4f6ff" width="1400px" height="300px"  borderRadius={16} 
          style={{ marginLeft:260, textAlign: 'center', justifyContent:"center", alignItems:"center"}} >
       <h1 style={{fontSize:36}}>Browse the Library!</h1>
@@ -160,8 +162,8 @@ const handlePrint = (e) => {
           onOpen={handleOpen}
           onChange={handleChange}
         >
-          <MenuItem value={"inauthor:"}>Author</MenuItem>
           <MenuItem value={"intitle:"}>Title</MenuItem>
+          <MenuItem value={"inauthor:"}>Author</MenuItem>
           <MenuItem value={"inpublisher:"}>Publisher</MenuItem>
           <MenuItem value={"subject:"}>Subject</MenuItem>
           <MenuItem value={"isbn:"}>ISBN</MenuItem>
@@ -177,7 +179,7 @@ const handlePrint = (e) => {
         </div>
       </RadioGroup>
       </div> 
-        </Box>
+        </Box></div>
         <Grid style={{marginLeft:300, marginTop:50}} 
         container spacing={10} justifyContent="center " alignContent="center" alignItems="center">
             {books.map((book)=>(
